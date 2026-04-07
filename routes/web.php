@@ -20,3 +20,23 @@ Route::post('products', function (Request $request) {
 
     return redirect()->route('products.index') ->with('success', 'Producto creado exitosamente');
 })->name('products.store');
+
+Route::delete('products/{id}', function ($id) {
+    $product = Product::findOrFail($id);
+    $product->delete();
+    return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente');
+})->name('products.destroy');
+
+Route::get('products/{id}/edit', function ($id) {
+    $product = Product::findOrFail($id);
+    return view('products.edit', compact('product'));
+})->name('products.edit');
+
+Route::put('products/{id}', function (Request $request, $id) {
+    $product = Product::findOrFail($id);
+    $product->description = $request->input('description');
+    $product->price = $request->input('price');
+    $product->save();
+
+    return redirect()->route('products.index')->with('success', 'Producto actualizado exitosamente');
+})->name('products.update');

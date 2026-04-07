@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
     <div class="container">
         <div class="row mt-4">
             <div class="col-md-12">
@@ -25,19 +18,31 @@
                             <thead>
                                 <th>Descripción</th>
                                 <th>Precio</th>
+                                <th>Eliminar</th>
+                                <th>Editar</th>
                             </thead>
                             <tbody>
                                 @foreach ($products as $product)
                                     <tr>
                                         <td>{{ $product->description }}</td>
                                         <td>{{ $product->price }}</td>
+                                        <td>
+                                            <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>                                     
+                                            </form>
+                                        </td>   
+                                        <td>
+                                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">Editar</a>
+                                        </td> 
                                     </tr>
                                 @endforeach
                             </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+@endsection   
