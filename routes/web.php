@@ -45,6 +45,8 @@ Route::put('products/{id}', function (Request $request, $id) {
     return redirect()->route('products.index')->with('success', 'Producto actualizado exitosamente');
 })->name('products.update');
 
+Route::get('products/{id}', [ProductController::class, 'show'])->name('products.show');
+
 // ============ RUTAS DE AUTENTICACIÓN ============
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
