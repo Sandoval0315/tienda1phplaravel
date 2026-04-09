@@ -10,13 +10,8 @@ class User extends Model implements AuthenticatableContract
 {
     use Authenticatable;
 
-    protected $fillable = [
-        'name', 'email', 'password', 'role',
-    ];
-
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'role'];
+    protected $hidden = ['password', 'remember_token'];
 
     public function isAdmin()
     {

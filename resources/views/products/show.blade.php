@@ -55,18 +55,29 @@
             </div>
             
             <!-- Tallas -->
-            @if($product->sizes)
-            <div>
-                <h3 class="font-medium mb-3">Tallas disponibles</h3>
-                <div class="flex space-x-3">
-                    @foreach(json_decode($product->sizes) as $size)
-                    <button class="size-btn w-12 h-12 rounded-full border-2 border-gray-300 hover:border-black transition">
-                        {{ $size }}
-                    </button>
-                    @endforeach
-                </div>
-            </div>
-            @endif
+            <!-- Tallas/Medidas según categoría -->
+@if($product->sizes)
+<div>
+    <h3 class="font-medium mb-3">
+        @if($product->category == 'Pantalones')
+            Tallas (numeración)
+        @elseif($product->category == 'Zapatos')
+            Números disponibles
+        @elseif($product->category == 'Carteras')
+            Tamaños disponibles
+        @else
+            Tallas disponibles
+        @endif
+    </h3>
+    <div class="flex flex-wrap gap-3">
+        @foreach(json_decode($product->sizes) as $size)
+        <button class="size-btn w-12 h-12 rounded-full border-2 border-gray-300 hover:border-black transition">
+            {{ $size }}
+        </button>
+        @endforeach
+    </div>
+</div>
+@endif
             
             <!-- Colores -->
             @if($product->colors)
@@ -75,7 +86,7 @@
                 <div class="flex space-x-3">
                     @foreach(json_decode($product->colors) as $color)
                     <button class="w-8 h-8 rounded-full border-2 border-gray-300 hover:border-black transition"
-                            style="background-color: {{ $color == 'Negro' ? '#000' : ($color == 'Blanco' ? '#fff' : '#3b82f6') }}"></button>
+                            style="background-color: {{ $color == 'Negro' ? '#000' : ($color == 'Blanco' ? '#ffffff' : '#3b82f6') }}"></button>
                     @endforeach
                 </div>
             </div>

@@ -86,13 +86,23 @@
                     </div>
                     
                     <!-- Tallas disponibles (mini) -->
-                    @if($product->sizes)
-                    <div class="flex space-x-1 text-xs text-gray-500">
-                        @foreach(json_decode($product->sizes) as $size)
-                            <span class="w-6 h-6 flex items-center justify-center rounded-full bg-gray-100">{{ $size }}</span>
-                        @endforeach
-                    </div>
-                    @endif
+                    <!-- Tallas disponibles según categoría -->
+@if($product->sizes)
+<div class="flex space-x-1 text-xs text-gray-500 mt-2">
+    @php
+        $sizesArray = json_decode($product->sizes);
+        $displaySizes = array_slice($sizesArray, 0, 3);
+    @endphp
+    @foreach($displaySizes as $size)
+        <span class="w-6 h-6 flex items-center justify-center rounded-full bg-gray-100 text-xs">
+            {{ $size }}
+        </span>
+    @endforeach
+    @if(count($sizesArray) > 3)
+        <span class="text-gray-400">+{{ count($sizesArray) - 3 }}</span>
+    @endif
+</div>
+@endif
                 </div>
             </div>
         </div>
