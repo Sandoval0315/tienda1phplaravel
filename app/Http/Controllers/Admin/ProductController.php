@@ -67,6 +67,8 @@ class ProductController extends Controller
             'brand' => 'required|string',
             'stock' => 'required|integer|min:0',
             'image' => 'nullable|url',
+            'sizes' => 'nullable|array',
+            'colors' => 'nullable|array',
         ]);
 
         $product->update([

@@ -83,12 +83,7 @@
             @if($product->colors)
             <div>
                 <h3 class="font-medium mb-3">Colores</h3>
-                <div class="flex space-x-3">
-                    @foreach(json_decode($product->colors) as $color)
-                    <button class="w-8 h-8 rounded-full border-2 border-gray-300 hover:border-black transition"
-                            style="background-color: {{ $color == 'Negro' ? '#000' : ($color == 'Blanco' ? '#ffffff' : '#3b82f6') }}"></button>
-                    @endforeach
-                </div>
+                <p class="text-sm text-gray-600">{{ implode(', ', json_decode($product->colors)) }}</p>
             </div>
             @endif
             

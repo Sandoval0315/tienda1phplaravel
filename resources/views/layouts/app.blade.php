@@ -72,15 +72,20 @@
                     <a href="#" class="relative">
                         <i class="fa-regular fa-heart text-xl"></i>
                     </a>
-                    <a href="#" class="relative">
+                    <a href="{{ route('cart.index') }}" class="relative">
                         <i class="fa-regular fa-bag-shopping text-xl"></i>
                         @php
                         $cartCount = count(session()->get('cart', []));
                         @endphp
                         @if($cartCount > 0)
                         <span
-                            class="absolute -top-2 -right-3 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                            class="cart-badge absolute -top-2 -right-3 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                             {{ $cartCount }}
+                        </span>
+                        @else
+                        <span
+                            class="cart-badge absolute -top-2 -right-3 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">
+                            0
                         </span>
                         @endif
                     </a>

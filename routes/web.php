@@ -80,3 +80,12 @@ Route::get('/', function () {
     return redirect()->route('products.index');
 });
 
+use App\Http\Controllers\CartController;
+
+// Rutas del carrito
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::delete('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+
