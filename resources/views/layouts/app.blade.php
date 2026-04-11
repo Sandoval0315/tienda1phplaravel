@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Ropa - @yield('title')</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="{{ url('/favicon.ico') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
     * {
@@ -135,7 +136,7 @@
             <div class="grid grid-cols-4 gap-8">
                 <div>
                     <h3 class="font-medium mb-4">BéRRY</h3>
-                    <p class="text-sm text-gray-600">Moda sostenible para almas libres</p>
+                    <p class="text-sm text-gray-600">Tienda de ropa</p>
                 </div>
                 <div>
                     <h4 class="text-sm font-medium mb-4">AYUDA</h4>
